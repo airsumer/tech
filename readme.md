@@ -1,0 +1,1 @@
+some notes about inforation technology
