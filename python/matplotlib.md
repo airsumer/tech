@@ -33,7 +33,7 @@ The [`Axes`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html
 
 An Axes is an Artist attached to a Figure that contains a region for plotting data, and usually includes ：two (or three in the case of 3D) [`Axis`](https://matplotlib.org/stable/api/axis_api.html#matplotlib.axis.Axis) objects (be aware of the difference between **Axes** and **Axis**) that provide ticks and tick labels to provide scales for the data in the Axes。
 
-每一个axes的基本成员及设置方法为：
+每一个`axes`的基本成员及设置方法为：
 
 | member     | function                                                     |
 | ---------- | ------------------------------------------------------------ |
@@ -67,7 +67,7 @@ Basically, everything visible on the Figure is an Artist (even [`Figure`](https:
 2. [`numpy.ma.masked_array`](https://numpy.org/doc/stable/reference/generated/numpy.ma.masked_array.html#numpy.ma.masked_array) 
 3. 能够传递给 [`numpy.asarray`](https://numpy.org/doc/stable/reference/generated/numpy.asarray.html#numpy.asarray)的其他数据类型
 
-如果是其他数据类型就需要将其类型转换为这三种类型，例如pandas之类的数据就需要转换为`numpy.array`。
+如果是其他数据类型就需要将其类型转换为这三种类型，例如`pandas`之类的数据就需要转换为`numpy.array`。
 
 
 
@@ -77,15 +77,15 @@ Basically, everything visible on the Figure is an Artist (even [`Figure`](https:
 
 有两种基本的绘图编码风格：
 
-1. 面向对象风格编码：使用面向对象的思想显式创建figure和axes对象
-2. pylpot风格：这种风格隐式地创建figure和axes对象
+1. 面向对象风格编码：使用面向对象的思想显式创建`figure`和`axes`对象
+2. `pylpot`风格：这种风格隐式地创建`figure`和`axes`对象
 
 ## 面向对象编码风格
 
 该风格基本就的过程就是：
 
-1. 调用api创建figure和axes对象
-2. 在axes中添加数据、label和title等
+1. 调用`api`创建`figure`和axes`对象
+2. 在`axes`中添加数据、`label`和`title`等
 
 ``` python
 x = np.linspace(0, 2, 100)  # Sample data.
@@ -121,3 +121,78 @@ plt.legend()
 ```
 
 画图的结果和上面的方式完全一样。
+
+# Styling Artist
+
+`matplotlib`提供各种方法设置各个`artist`的样式：颜色、线宽、线型等。
+
+
+
+# Labeling Plots
+
+## Axes labels and text
+
+使用`set_xlabel,set_ylabel,set_title`函数设置图表的标签。也可以使用`axes.text()`函数直接在图中添加。所有`text`函数的文本都支持`latex`输入。如果使用`latex`,用法如：
+
+`ax.text(75, .025, r'$\mu=115,\sigma=15$')`
+
+这里使用了`r`表示这是原始的字符串，不需要再进行转义。
+
+``` python
+mu, sigma = 115, 15
+x = mu + sigma * np.random.randn(10000)
+fig, ax = plt.subplots(figsize=(5, 2.7), layout='constrained')
+# the histogram of the data
+n, bins, patches = ax.hist(x, 50, density=True, facecolor='C0', alpha=0.75)
+
+ax.set_xlabel('Length [cm]')
+ax.set_ylabel('Probability')
+ax.set_title('Aardvark lengths\n (not really)')
+ax.text(75, .025, r'$\mu=115,\ \sigma=15$')
+ax.axis([55, 175, 0, 0.03])
+ax.grid(True)
+```
+
+![Aardvark lengths  (not really)](./assets/sphx_glr_quick_start_009.png)
+
+所有 [`text`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.text.html#matplotlib.axes.Axes.text) 函数返回一个 [`matplotlib.text.Text`](https://matplotlib.org/stable/api/text_api.html#matplotlib.text.Text) 实例。`text`的文本样式可设置，如：
+
+``` python
+t = ax.set_xlabel('my data', fontsize=14, color='red')
+```
+
+
+
+## Annotation
+
+可以使用`axes.annotate()`在某一个点处进行标记。如：
+
+``` python
+fig, ax = plt.subplots(figsize=(5, 2.7))
+
+t = np.arange(0.0, 5.0, 0.01)
+s = np.cos(2 * np.pi * t)
+line, = ax.plot(t, s, lw=2)
+
+ax.annotate('local max', xy=(2, 1), xytext=(3, 1.5),
+            arrowprops=dict(facecolor='black', shrink=0.05))
+
+ax.set_ylim(-2, 2)
+```
+
+标记的样式为：
+
+![quick start](./assets/sphx_glr_quick_start_010.png)
+
+``` python
+"""
+xy：要标记的位置
+xytext：标记的文本放在哪
+"""
+Axes.annotate(text, xy, xytext=None, xycoords='data', textcoords=None, arrowprops=None, annotation_clip=None, **kwargs)
+```
+
+函数的声明和用法参考：https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.annotate.html#matplotlib.axes.Axes.annotate
+
+# Axis scales and ticks
+
