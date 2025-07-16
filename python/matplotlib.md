@@ -1,7 +1,7 @@
 # Matplotlib画图基础
 ## 画图的基本概念
 ### figure
-在`matplotlib`中，在任何绘图之前，我们需要一个 Figure 对象，可以理解成我们需要一张画板才能开始绘图。一个`figure`就是一个窗口，是`axes`的容器。特点是代码中定义几个`figure`，`plt.show()`的时候显示器上就会弹出几个窗口。其基本的定义为：
+在`matplotlib`中，在任何绘图之前，我们需要一个**Figur**对象，可以理解成我们需要一张画板才能开始绘图。一个`figure`就是一个窗口，是`axes`的容器。特点是代码中定义几个`figure`，`plt.show()`的时候显示器上就会弹出几个窗口。其基本的定义为：
   ``` python 
 """
  num:图像编码或者名称，数字是编码，字符串是名称
@@ -35,9 +35,9 @@ An Axes is an Artist attached to a Figure that contains a region for plotting da
 
 每一个`axes`的基本成员及设置方法为：
 
-| member     | function                                                     |
-| ---------- | ------------------------------------------------------------ |
-| `title`    | [`set_title()`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_title.html#matplotlib.axes.Axes.set_title) |
+| member     | function                                                                                                                         |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `title`    | [`set_title()`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_title.html#matplotlib.axes.Axes.set_title)    |
 | ` x-label` | [`set_xlabel()`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xlabel.html#matplotlib.axes.Axes.set_xlabel) |
 | `y-labe`   | [`set_ylabel()`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_ylabel.html#matplotlib.axes.Axes.set_ylabel) |
 
