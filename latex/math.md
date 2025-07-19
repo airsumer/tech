@@ -14,7 +14,7 @@ $\sum\limits_{x=1}^{N}\frac{1}{x}$.但是这种方法还是以行内公式的样
 
 ### 求和符号与算式距离过远的问题
 $$
-\sum_{=<quiteBigInteger}^N \frac{1}{x}
+\sum_{=quiteBigInteger}^N \frac{1}{x}
 $$
 在这个公式中,求和符号$\sum$与$\displaystyle \frac{1}{x}$隔得很远.看起来不是很好看,因此可以使用`mathtools`包中的`\smashoperator`命令.  (`mathtools`包主要用于美化数学公式的样式)
 $$
@@ -81,8 +81,17 @@ $$D(x) = \begin{cases}
 \int_a^{3b}x_{ij}+e^2 \mathrm{d}x,& x>3 \\
 \end{cases}$$
 
-## 符号表示
-### 上下横线
+# 字体符号表示
+## 数学中的常用字体
+
+| 字体      | 代码       | 符号示例                                                                            |
+| --------- | ---------- | ----------------------------------------------------------------------------------- |
+| 书法字体  | `\mathcal` | $损失函数\mathcal{L},样本集合\mathcal{D},时间复杂度\mathcal{O},高斯分布\mathcal{N}$ |
+| 黑板字体  | `\mathbb`  | $\mathbb{R},\mathbb{N}$                                                             |
+| 黑体\粗体 | `\mathbf`  | $\mathbf{ABCD}$                                                                     |
+| 花体      | `\mathscr` | $\mathscr{F}$                                                                       |
+
+## 上下横线
 | 符号                                            | 代码                                            |
 | ----------------------------------------------- | ----------------------------------------------- |
 | $\overrightarrow{AB}$                           | `\overrightarrow`                               |
@@ -95,7 +104,7 @@ $$D(x) = \begin{cases}
 
 加上横线时,由于本身不同字符的高度不同,因此单字符时横线的高度也不同,如$\vec{a} \quad \vec{b}$.为了解决此问题,可以使用`mathtools`包中的`\mathstrut`命令,如$\vec{\mathstrut{a}} \quad \vec{\mathstrut{b}}$
 
-### 微积分
+## 微积分
 
 基本的特点为:
 - 三角函数等函数名为单词的,直接在单词前加`\`就是其Latex代码,如`lim`和`sin`
