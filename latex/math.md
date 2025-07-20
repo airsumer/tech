@@ -46,41 +46,6 @@ $$
 
 有时候根式的指数位置不太好看,这时候也可以使用`mathtools`包中的`\uproot`,`leftroot`等命令调整指数的高度,如`\sqrt[\uproot[10]3]8`.该命令的参数可以表示指数的高度.
 
-# 公式环境
-
-公式环境使用`$$`来进入,如果在公式中想要直接插入文本,则可以直接使用`\text`命令,可以避免转移符.
-- 使用`&`符号表示分列,位置相同的`&`符号会对齐
-- 使用`\\`表示换行
-## split环境公式拆分-公式推导
-实例代码:
-``` latex
-$$\begin{split}
-\cos 2x &= \cos^2x - \sin^2x \\
-&=2\cos^2x-1
-\end{split}$$
-
-```
-
-$$\begin{split}
-\cos 2x &= \cos^2x - \sin^2x \\
-&=2\cos^2x-1
-\end{split}$$
-
-## 分段函数表示-cases环境
-``` latex
-$$D(x) = \begin{cases}
-\lim\limits_{x \to 0} \frac{a^x}{b+c}, & x<3 \\
-\pi, & x=3 \\
-\int_a^{3b}x_{ij}+e^2 \mathrm{d}x,& x>3 \\
-\end{cases}$$
-```
-效果为:
-$$D(x) = \begin{cases}
-\lim\limits_{x \to 0} \frac{a^x}{b+c}, & x<3 \\
-\pi, & x=3 \\
-\int_a^{3b}x_{ij}+e^2 \mathrm{d}x,& x>3 \\
-\end{cases}$$
-
 # 字体符号表示
 ## 数学中的常用字体
 
