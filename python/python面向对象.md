@@ -1,7 +1,7 @@
 ref:
 1. https://brinnatt.com/programming/python_tech/17%e3%80%81python3-%e9%9d%a2%e5%90%91%e5%af%b9%e8%b1%a1/
 2. https://pythonhowto.readthedocs.io/zh-cn/latest/object.html#id2
-# 类的定义
+# 类的基本定义和使用
 ref:
 1. https://brinnatt.com/programming/python_tech/17%e3%80%81python3-%e9%9d%a2%e5%90%91%e5%af%b9%e8%b1%a1/
 ## 成员变量的定义
@@ -146,6 +146,8 @@ class Derive(Base):
 ```
 
 # 对象的内存管理
+
+## 对象在内存中的构成
 在python中,一个对象在内存中的大概结构为
 ``` c
 struct class{
@@ -166,18 +168,28 @@ python提供一些内置函数可以读取一个对象的这些基本属性.
 | `__base__`                | 对象的一个属性,查看其基类                        |
 
 此外,所有的对象都会继承`object`类,就算没有明确定义继承的基类,也会默认继承`object`类.`object`类的成员和属性参考:https://pythonhowto.readthedocs.io/zh-cn/latest/object.html#id14 13.3节.这里提供一个简单摘要:
-| 成员               | 作用                                                                          |
-| ------------------ | ----------------------------------------------------------------------------- |
-| __delattr__        |
-| __dir__()          | 用于获取类的所有属性和方法名,是一个字典,内置的`dir()`函数调用的就是他         |
-| __doc__            | 指向当前类的描述字符串,描述字符串不会被继承                                   |
-| __format__         |
-| __getattribute__   |
-| __hash__           |
-| __init__           |
-| __init__subclass__ |
-| __repr__           |
-| __setattr__        |
-| __sizeof__         |
-| __str__            | 用于`str()`函数中                                                             |
-| __call__           | 可以将一个对象名函数化,有点类似cpp中的重载`()`运算符?装饰器基于`__call__`实现 |
+| 成员                 | 作用                                                                          |
+| -------------------- | ----------------------------------------------------------------------------- |
+| `__delattr__ `       |
+| `__dir__() `         | 用于获取类的所有属性和方法名,是一个字典,内置的`dir()`函数调用的就是他         |
+| `__doc__ `           | 指向当前类的描述字符串,描述字符串不会被继承                                   |
+| `__format__`         |
+| `__getattribute__ `  |
+| `__hash__`           |
+| `__init__ `          |
+| `__init__subclass__` |
+| `__repr__`           |
+| ` __setattr__`       |
+| `__sizeof__() `      | 返回对象本身内存占用字节数,不包括该对象引用的其他对象的内存大小               |
+| `__str__`            | 用于`str()`函数中                                                             |
+| `__call__`           | 可以将一个对象名函数化,有点类似cpp中的重载`()`运算符?装饰器基于`__call__`实现 |
+
+## 对象的创建过程
+ref:
+1. https://xxhs-blog.readthedocs.io/zh-cn/latest/how_to_be_a_rich_man.html
+
+对象的创建分为两步:
+1. 调用`__new__()`函数**创建**对象.该对象是一个静态函数.
+2. 调用`__inti__()`函数完成**初始化**
+
+在`__new__()`函数不是必须写的,没有的话会使用`object.__new__()`去创建一个对象.
