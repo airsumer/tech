@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage{ctex}
+\usepackage[ruled,linesnumbered]{algorithm2e}
+\begin{document}
+
+% 更改算法的计数器
+\setcounter{algocf}{0}
+\begin{algorithm}
+    % 更改算法的名称显示格式
+    \renewcommand{\algorithmcfname}{算法}
+    \caption{随机梯度下降算法}
+    \label{al}
+    \KwIn{训练集$\mathcal{D}=\left \{\left ( x^{(n)},y^{(n)} \right ) \right \}^N_{n=1}$,验证集$\mathcal{V}$,学习率$\alpha$}
+    \KwOut{模型最优参数$\theta$}
+    \BlankLine
+    随机初始化$\theta$ \;
+    \While{模型$f(x:\theta)$在$\mathcal{V}$上错误率会下降}{
+    对训练集合$\mathcal{D}$中的样本随机排序 \;
+    \For{$n=1 \cdots N$}{
+    从训练集$D$中选取样本$\left ( x^{(n)},y^{(n)}\right )$ \;
+    $\theta \leftarrow \theta - \alpha\frac{\partial \mathcal{L} \left ( \theta;x^{(n)},y^{n} \right )}{\partial \theta}$ \;
+    }
+    }
+\end{algorithm}
+
+\end{document}
