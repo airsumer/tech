@@ -12,3 +12,8 @@
   - 抽样分析
   - 估计理论
   - 假设检验
+
+# 参考资料
+
+- 网课：[徐小湛《概率论与数理统计》70讲](https://www.bilibili.com/video/BV17e411J7FL)
+- ppt:[概率统计-暨南大学-吕](https://lvjr.bitbucket.io/gltj.html)
