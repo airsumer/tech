@@ -128,6 +128,10 @@ docker run -it --rm ubuntu:18.04 bash
 
 但是`docker attach`命令不同，其`docker`容器的生命周期和终端是相互绑定的。
 
+## 容器的重启
+
+通过`docker container start`命令可以启动已经关闭了的容器。
+
 
 ## 容器运行的过程
 

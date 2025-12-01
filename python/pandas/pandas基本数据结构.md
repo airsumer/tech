@@ -1,15 +1,17 @@
-# 基本数据结构
+
 
 两种基本数据结构：
 
-1. `DataFrame`可以看成一个矩形表格（比如`m`行`n`列的数据）甚至是整个表格，存储的是二维的数据。
-2. `Series`则是`DataFrame`中的一列，存储的是一维的数据。
+1. `DataFrame`可以看成一个**矩形表格**（比如`m`行`n`列的数据）甚至是整个表格，存储的是二维的数据。
+2. `Series`则是`DataFrame`中的**一列**，存储的是一维的数据![db86fd2ccc0a36ab68604c834be73a08](./asset/db86fd2ccc0a36ab68604c834be73a08.png)数据。
 
-![img](./assets/db86fd2ccc0a36ab68604c834be73a08.png)
+# Series
 
-## Series
+`Series`本质上是一个**带标签的一维数组**，可以看成是**numpy一维数组+字典**的结合体。
 
-Series类的实例属性包含：data(序列值)、index（行索引）、dtype（存储类型）、name（序列名）四部分属性。
+## Series数据结构的定义
+
+Series类的实例属性包含：`data(序列值)、index（行索引）、dtype（存储类型）、name（序列名）`四部分属性。
 
 ``` python
 # https://github.com/pandas-dev/pandas/blob/main/pandas/core/series.py
@@ -60,7 +62,13 @@ print(s)
 
 运行的结果为：
 
-![image-20250519083305586](./assets/image-20250519083305586.png)
+![image-20250519083305586](./asset/image-20250519083305586.png)
+
+## series的核心用途
+
+
+
+
 
 可以通过列表或字典创建
 
@@ -129,9 +137,9 @@ class DataFrame(NDFrame, OpsMixin):
 
 DataFrame的主要特点是：
 
-- DataFrame的属性在Series的基础上增加了列索引columns，减少了name属性。
+- `DataFrame`的属性在`eries`的基础上增加了列索引`columns`，减少了name属性。
 
-- DataFrame的设置数据类型dtype时，表示要强制的数据类型，但只允许使用一种数据类型。
+- `DataFrame`的设置数据类型`dtype`时，表示要强制的数据类型，但只允许使用一种数据类型。
 
 	如果没有定义强制的数据类型，就会自行推断
 
@@ -159,9 +167,7 @@ data = {'语文':[102,103,104,105],
 df = pd.DataFrame(data=data,index = ['小明','小强','小红','小兰'])
 ```
 
-运行的结果为：
-
-![image-20250519085915564](./assets/image-20250519085915564.png)
+运行的结果为：![image-20250519085915564](./asset/image-20250519085915564.png)
 
 # 数据读取
 
